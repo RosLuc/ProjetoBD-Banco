@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Documents/GitHub/ProjetoBD-Banco/eclipselink/jlib/jpa/jakarta.persistence_2.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Documents/GitHub/ProjetoBD-Banco/eclipselink/jlib/eclipselink.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Documents/GitHub/ProjetoBD-Banco/eclipselink/postgresql-42.2.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

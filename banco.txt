@@ -1,0 +1,36 @@
+CREATE TABLE public.conta
+(
+    id_conta integer NOT NULL DEFAULT nextval('conta_id_conta_seq'::regclass),
+    id_pessoa integer NOT NULL,
+    saldo double precision NOT NULL,
+    CONSTRAINT conta_pkey1 PRIMARY KEY (id_conta),
+    CONSTRAINT conta_id_pessoa_fkey FOREIGN KEY (id_pessoa)
+        REFERENCES public.pessoa (id_pessoa) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+
+
+ALTER TABLE public.conta
+    OWNER to postgres;
+
+CREATE TABLE public.pessoa
+(
+    id_pessoa integer NOT NULL DEFAULT nextval('pessoa_id_pessoa_seq'::regclass),
+    nome character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    cpf character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    rg character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT pessoa_pkey PRIMARY KEY (id_pessoa)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.pessoa
+    OWNER to postgres;

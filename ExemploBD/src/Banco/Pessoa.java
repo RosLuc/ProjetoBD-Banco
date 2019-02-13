@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
@@ -48,7 +49,7 @@ public class Pessoa {
 	}
 	public void setRG(String rG) {
 		RG = rG;
-	}
+	}	
 	
 	public boolean salvarPessoa(Pessoa p){
         try{
@@ -110,6 +111,7 @@ public class Pessoa {
         }
         catch(Exception e){
             System.err.println("Erro: "+e);
+            e.printStackTrace();
             return false;
         }
     }

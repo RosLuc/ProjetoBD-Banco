@@ -3,20 +3,20 @@ package Banco;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "conta", schema = "jpa")
+@Table(name = "conta")
 public class Conta {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "conta", sequenceName = "conta_id_conta_seq",allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conta")
 	@Column(name = "id_conta", nullable = false)
 	int id_conta;
 	
-	@Column(name = "id_pessoa", nullable = false,
-			insertable = true, updatable = true, unique = false)
-	int id_pessoa;
+	@ManyToOne
+	@JoinColumn(name = "id_pessoa", nullable = false, unique = false)
+	Pessoa pessoa;
 	
-	@Column(name = "saldo", nullable = false,
-			insertable = true, updatable = true, unique = false)
+	@Column(name = "saldo", nullable = false, unique = false)
 	double saldo;
 	
 	public Conta() {
@@ -31,12 +31,12 @@ public class Conta {
 		this.id_conta = id_conta;
 	}
 
-	public int getId_pessoa() {
-		return id_pessoa;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setId_pessoa(int id_pessoa) {
-		this.id_pessoa = id_pessoa;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	public double getSaldo() {
@@ -47,5 +47,60 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Conta [id_conta=" + id_conta + ", pessoa=" + pessoa + ", saldo=" + saldo + "]";
+	}
 	
+	public boolean salvarConta(){
+        try{
+            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
+            EntityTransaction tx_part = s.getTransaction();
+            tx_part.begin();
+            s.persist(this);
+            tx_part.commit();
+            s.close();
+            return true;
+        }
+        catch(Exception e){
+            System.err.println("Erro: "+e);
+            e.printStackTrace();
+            return false;
+        }
+    }
+	
+	public boolean removerConta(int id_conta){
+        try{
+            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
+            EntityTransaction tx_part = s.getTransaction();
+            tx_part.begin();
+            Conta conta = s.find(Conta.class, id_conta);
+            s.remove(conta);
+            tx_part.commit();
+            s.close();
+            return true;
+        }
+        catch(Exception e){
+            System.err.println("Erro: "+ e);
+            e.printStackTrace();
+            return false;
+        }
+    }
+	
+	public boolean atualizarConta(){
+        try{
+            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
+            EntityTransaction tx_part = s.getTransaction();
+            tx_part.begin();
+            s.merge(this); 
+            tx_part.commit();
+            s.close();
+            return true;
+        }
+        catch(Exception e){
+            System.err.println("Erro: "+e);
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -10,7 +10,8 @@ public class TesteContaBancaria {
 	public static void main(String[] args) {
 		Pessoa p = new Pessoa();
 		Conta c = new Conta();
-		
+		c.setId_conta(2);
+		c.setSaldo(500.00);
 		p.setCPF("1001");
 		p.setNome("Rosendo");
 		p.setRG("222");

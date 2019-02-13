@@ -12,13 +12,14 @@ public class TesteContaBancaria {
 		p.setCPF("1001");
 		p.setNome("Rosendo");
 		p.setRG("222");
-		p.setId_pessoa(1);
-		c.setPessoa(p);
-		c.atualizarConta();
-		//c.setId_pessoa(1);
-		//c.setSaldo(00.00);
+		//p.setId_pessoa(1);
+		
+		c.setId_pessoa(1);
+		c.setSaldo(00.00);
+		
 		//ContaBancariaDAO dao = new ContaBancariaDAO(p, c);
-		//p.salvarPessoa();
+		
+		p.salvarPessoa(p);
 		
 	}
 

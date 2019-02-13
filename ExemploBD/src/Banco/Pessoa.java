@@ -7,9 +7,10 @@ import javax.persistence.*;
 @Table(name = "pessoa")
 public class Pessoa {
 	//static private EntityManager em = (EntityManager) Persistence.createEntityManagerFactory("MATA-INF/persistence.xml");
+	
 	@Id
-	@SequenceGenerator(name = "pessoa", sequenceName = "pessoa_id_pessoa_seq",allocationSize=1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa")
+	@SequenceGenerator(name = "pessoas", sequenceName = "pessoa_id_pessoa_seq",allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoas")
 	@Column(name = "id_pessoa")
 	int id_pessoa;
 	
@@ -47,12 +48,12 @@ public class Pessoa {
 		RG = rG;
 	}	
 	
-	public boolean salvarPessoa(){
+	public boolean salvarPessoa(Object obj){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
-            s.persist(this);
+            s.persist(obj);
             tx_part.commit();
             s.close();
             return true;

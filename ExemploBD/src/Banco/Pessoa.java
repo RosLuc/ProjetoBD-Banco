@@ -2,12 +2,14 @@ package Banco;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
 	//static private EntityManager em = (EntityManager) Persistence.createEntityManagerFactory("MATA-INF/persistence.xml");
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "pessoa", sequenceName = "pessoa_id_pessoa_seq",allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa")
 	@Column(name = "id_pessoa")
 	int id_pessoa;
 	
@@ -43,7 +45,7 @@ public class Pessoa {
 	}
 	public void setRG(String rG) {
 		RG = rG;
-	}
+	}	
 	
 	public boolean salvarPessoa(){
         try{
@@ -57,6 +59,7 @@ public class Pessoa {
         }
         catch(Exception e){
             System.err.println("Erro: "+e);
+            e.printStackTrace();
             return false;
         }
     }

@@ -122,7 +122,7 @@ public class Pessoa {
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
             lista = new ArrayList<Pessoa>();
-            lista = s.createQuery( "from Pessoa.class").getResultList();
+            lista = s.;
             s.close();
             return lista;
         }

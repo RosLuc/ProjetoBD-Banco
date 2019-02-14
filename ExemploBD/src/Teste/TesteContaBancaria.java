@@ -21,13 +21,10 @@ public class TesteContaBancaria {
 		
 		//ContaBancariaDAO dao = new ContaBancariaDAO(p, c);
 		
-		p.salvarPessoa(p);
+		p = p.buscarPessoa(1);
+		System.out.println(p.getNome());
+		.List<Pessoa> lista = p.ListPessoa();
 		
-		List<Pessoa> lista = p.ListPessoa();
-		
-		for(int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i).getNome()+ "\n");
-		}
 		
 	}
 

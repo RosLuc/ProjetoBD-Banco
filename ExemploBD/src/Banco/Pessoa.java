@@ -50,6 +50,12 @@ public class Pessoa {
 		RG = rG;
 	}
 	
+	@Override
+	public String toString() {
+		return "Pessoa [id_pessoa=" + id_pessoa + ", nome=" + nome + ", cpf=" + CPF + ", rg=" + RG +"]";
+	}
+	
+	
 	public boolean salvarPessoa(Pessoa p){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
@@ -114,15 +120,15 @@ public class Pessoa {
         }
     }
 	
-	@SuppressWarnings("unchecked")
 	public List<Pessoa> ListPessoa(){
 		List<Pessoa> lista;
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
+            //CriteriaQuery<Pessoa> c = s.getCriteriaBuilder().createQuery(Pessoa.class);
             lista = new ArrayList<Pessoa>();
-            lista = s.;
+            lista = s.createQuery(s.getCriteriaBuilder().createQuery(Pessoa.class)).getResultList();
             s.close();
             return lista;
         }

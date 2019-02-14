@@ -1,5 +1,8 @@
 package Banco;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -75,7 +78,7 @@ public class Conta {
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
             Conta conta = s.find(Conta.class, id_conta);
-            s.remove(conta);
+            if(conta != null) s.remove(conta);
             tx_part.commit();
             s.close();
             return true;
@@ -101,6 +104,23 @@ public class Conta {
             System.err.println("Erro: "+e);
             e.printStackTrace();
             return false;
+        }
+    }
+	
+	public List<Conta> ListConta(){
+		List<Conta> lista;
+        try{
+            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
+            EntityTransaction tx_part = s.getTransaction();
+            tx_part.begin();
+            lista = new ArrayList<Conta>();
+            lista = s.createQuery(s.getCriteriaBuilder().createQuery(Conta.class)).getResultList();
+            s.close();
+            return lista;
+        }
+        catch(Exception e){
+            System.err.println("Erro: "+e);
+            return null;
         }
     }
 }

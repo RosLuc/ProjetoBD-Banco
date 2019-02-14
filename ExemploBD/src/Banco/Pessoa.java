@@ -1,8 +1,5 @@
 package Banco;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
 
 
@@ -51,60 +48,12 @@ public class Pessoa {
 		RG = rG;
 	}	
 	
-	public boolean salvarPessoa(Pessoa p){
+	public boolean salvarPessoa(Object obj){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
-            s.persist(p);
-            tx_part.commit();
-            s.close();
-            return true;
-        }
-        catch(Exception e){
-            System.err.println("Erro: "+e);
-            return false;
-        }
-    }
-	
-	public boolean atualizarPessoa(Pessoa p){
-        try{
-            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
-            EntityTransaction tx_part = s.getTransaction();
-            tx_part.begin();
-            s.merge(p);
-            tx_part.commit();
-            s.close();
-            return true;
-        }
-        catch(Exception e){
-            System.err.println("Erro: "+e);
-            return false;
-        }
-    }
-	
-	public Pessoa buscarPessoa(int id){
-        try{
-            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
-            EntityTransaction tx_part = s.getTransaction();
-            tx_part.begin();
-            Pessoa p = s.find(Pessoa.class, id);
-            tx_part.commit();
-            s.close();
-            return p;
-        }
-        catch(Exception e){
-            System.err.println("Erro: "+e);
-            return null;
-        }
-    }
-	
-	public boolean removerPessoa(){
-        try{
-            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
-            EntityTransaction tx_part = s.getTransaction();
-            tx_part.begin();
-            s.remove(this);
+            s.persist(obj);
             tx_part.commit();
             s.close();
             return true;
@@ -113,24 +62,6 @@ public class Pessoa {
             System.err.println("Erro: "+e);
             e.printStackTrace();
             return false;
-        }
-    }
-	
-	@SuppressWarnings("unchecked")
-	public List<Pessoa> ListPessoa(){
-		List<Pessoa> lista;
-        try{
-            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
-            EntityTransaction tx_part = s.getTransaction();
-            tx_part.begin();
-            lista = new ArrayList<Pessoa>();
-            lista = s.;
-            s.close();
-            return lista;
-        }
-        catch(Exception e){
-            System.err.println("Erro: "+e);
-            return null;
         }
     }
 }

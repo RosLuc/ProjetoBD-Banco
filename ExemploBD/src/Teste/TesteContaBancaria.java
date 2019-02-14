@@ -1,8 +1,5 @@
 package Teste;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Banco.*; 
 
 public class TesteContaBancaria {
@@ -22,10 +19,7 @@ public class TesteContaBancaria {
 		
 		//ContaBancariaDAO dao = new ContaBancariaDAO(p, c);
 		
-		p = p.buscarPessoa(1);
-		System.out.println(p.getNome());
-		.List<Pessoa> lista = p.ListPessoa();
-		
+		p.salvarPessoa(p);
 		
 	}
 

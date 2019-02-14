@@ -14,8 +14,8 @@ public class TesteContaBancaria {
 		p.setRG("222");
 		//p.setId_pessoa(1);
 		
-		c.setId_pessoa(1);
-		c.setSaldo(00.00);
+		//c.setId_pessoa(1);
+		//c.setSaldo(00.00);
 		
 		//ContaBancariaDAO dao = new ContaBancariaDAO(p, c);
 		

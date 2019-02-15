@@ -107,7 +107,23 @@ public class Conta {
         }
     }
 	
-	public List<Conta> ListConta(){
+	public Conta buscarConta(int id){
+        try{
+            EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
+            EntityTransaction tx_part = s.getTransaction();
+            tx_part.begin();
+            Conta p = s.find(Conta.class, id);
+            tx_part.commit();
+            s.close();
+            return p;
+        }
+        catch(Exception e){
+            System.err.println("Erro: "+e);
+            return null;
+        }
+    }
+	
+	static public List<Conta> ListConta(){
 		List<Conta> lista;
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();

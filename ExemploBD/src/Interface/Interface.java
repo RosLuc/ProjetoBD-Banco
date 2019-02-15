@@ -1,9 +1,18 @@
+package Interface;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+import java.awt.event.ActionEvent;
+import java.util.List;
+
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+import javax.swing.table.DefaultTableModel;
+
+import Banco.*;
 
 /**
  *
@@ -16,6 +25,7 @@ public class Interface extends javax.swing.JFrame {
      */
     public Interface() {
         initComponents();
+        atualizaList();
     }
 
     /**
@@ -63,9 +73,9 @@ public class Interface extends javax.swing.JFrame {
         SacarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "", "", "", "", "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -74,10 +84,11 @@ public class Interface extends javax.swing.JFrame {
         jTabbedPane1.addTab("Pessoa", jScrollPane2);
 
         jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "", "", "", "", "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        
         jScrollPane3.setViewportView(jList3);
 
         jTabbedPane1.addTab("Contas", jScrollPane3);
@@ -117,6 +128,11 @@ public class Interface extends javax.swing.JFrame {
         jLabel4.setText("CPF: ");
 
         CadButton.setText("Cadastrar");
+        CadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -177,6 +193,11 @@ public class Interface extends javax.swing.JFrame {
         });
 
         RemoverButton.setText("Remover");
+        RemoverButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoverButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -231,6 +252,11 @@ public class Interface extends javax.swing.JFrame {
         jLabel6.setText("CPF: ");
 
         AtualizaButton.setText("Atualizar");
+        AtualizaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizaButtonActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("RG: ");
@@ -429,8 +455,62 @@ public class Interface extends javax.swing.JFrame {
     }                                           
 
     private void DepositarButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
-    }                                               
+        
+    }  
+    
+    private void CadButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        Pessoa p = new Pessoa();
+        p.setNome(NomeCadTxt.getText());
+        p.setCPF(CPFCadTxt.getText());
+        p.setRG(RGCadTxt.getText());
+        p.salvarPessoa(p);
+        Conta c = new Conta();
+        c.setPessoa(p);
+        c.salvarConta();
+    	atualizaList();
+    } 
+    
+    private void AtualizaButtonActionPerformed(ActionEvent evt){
+        
+    }
+    
+    private void RemoverButtonActionPerformed(ActionEvent evt){
+        
+    }
+    
+    private void atualizaList() {
+    	jList2.setModel(preencherJlistPessoa());
+    	jList3.setModel(preencherJlistConta());
+    }
+    
+    private DefaultListModel preencherJlistPessoa() {
+        
+    	DefaultListModel modeloTable = new DefaultListModel();
+    	List<Pessoa> lista;
+        lista = Pessoa.ListPessoa();
+
+        for(int i = 0; i < lista.size(); i++) {
+        	Pessoa p = lista.get(i);
+            modeloTable.addElement("Id: " + p.getId_pessoa()+ "   |  Nome: " + p.getNome() + "   |  CPF: " + p.getCPF() + "   |  RG: " + p.getRG());
+        }
+        
+        return(modeloTable);
+    }
+    
+    private DefaultListModel preencherJlistConta() {
+        
+    	DefaultListModel modeloTable = new DefaultListModel();
+    	List<Conta> lista;
+        lista = Conta.ListConta();
+
+        for(int i = 0; i < lista.size(); i++) {
+        	Conta c = lista.get(i);
+            modeloTable.addElement("Id: " + c.getId_conta() + "   |  Saldo: " + c.getSaldo() + "   |  Nome Cliente: " + c.getPessoa().getNome());
+        }
+        
+        return(modeloTable);
+    }
+    
 
     /**
      * @param args the command line arguments

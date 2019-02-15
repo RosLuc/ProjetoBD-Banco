@@ -10,7 +10,7 @@ public class TesteContaBancaria {
 		
 		Interface.main(args);
 		
-		/*Pessoa p = new Pessoa();
+		Pessoa p = new Pessoa();
 		p.setCPF("1001");
 		p.setNome("Rosendo Lucas");
 		p.setRG("222");
@@ -32,7 +32,7 @@ public class TesteContaBancaria {
 		List<Conta> lista2 = c.ListConta();
 		for(int i = 0; i < lista2.size(); i++ ) {
 			System.out.println(lista2.get(i));
-		}*/
+		}
 		
 	}
 

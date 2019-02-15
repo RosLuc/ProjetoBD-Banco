@@ -120,7 +120,7 @@ public class Pessoa {
         }
     }
 	
-	public List<Pessoa> ListPessoa(){
+	static public List<Pessoa> ListPessoa(){
 		List<Pessoa> lista;
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();

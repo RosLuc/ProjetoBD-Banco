@@ -56,12 +56,12 @@ public class Pessoa {
 	}
 	
 	
-	public boolean salvarPessoa(Pessoa p){
+	public boolean salvarPessoa(){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
-            s.persist(p);
+            s.persist(this);
             tx_part.commit();
             s.close();
             return true;
@@ -72,12 +72,12 @@ public class Pessoa {
         }
     }
 	
-	public boolean atualizarPessoa(Pessoa p){
+	public boolean atualizarPessoa(){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
-            s.merge(p);
+            s.merge(this);
             tx_part.commit();
             s.close();
             return true;
@@ -104,12 +104,15 @@ public class Pessoa {
         }
     }
 	
-	public boolean removerPessoa(){
+	public boolean removerPessoa(Pessoa p){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
             tx_part.begin();
-            s.remove(this);
+            if (!s.contains(p)) {
+                p = s.merge(p);
+            }
+            s.remove(p);
             tx_part.commit();
             s.close();
             return true;
@@ -137,4 +140,15 @@ public class Pessoa {
             return null;
         }
     }
+	
+	static public boolean validarPessoa(Pessoa p) {
+		List<Pessoa> lista;
+		lista = Pessoa.ListPessoa();
+		for(int i = 0; i < lista.size(); i++) {
+			if(p.getCPF().equals(lista.get(i).getCPF()) || p.getRG().equals(lista.get(i).getRG())) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

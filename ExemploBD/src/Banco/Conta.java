@@ -72,7 +72,7 @@ public class Conta {
         }
     }
 	
-	public boolean removerConta(int id_conta){
+	static public boolean removerConta(int id_conta){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
@@ -139,4 +139,26 @@ public class Conta {
             return null;
         }
     }
+	
+	static public boolean validarConta(Pessoa p) {
+		List<Conta> lista;
+		lista = Conta.ListConta();
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getPessoa().getId_pessoa() == (p.getId_pessoa())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	static public boolean removerContaAll(Pessoa p) {
+		List<Conta> lista;
+		lista = Conta.ListConta();
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getPessoa().getId_pessoa() == (p.getId_pessoa())) {
+				if(removerConta(lista.get(i).getId_conta()) == false) return false;
+			}
+		}
+		return true;
+	}
 }

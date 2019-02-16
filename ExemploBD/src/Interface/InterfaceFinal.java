@@ -70,7 +70,7 @@ public class InterfaceFinal extends javax.swing.JFrame {
         IdContCadTxt = new javax.swing.JTextField();
         Id = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        CPFContCadTxt = new javax.swing.JTextField();
+        SaldoContCadTxt = new javax.swing.JTextField();
         CadButtonCont = new javax.swing.JButton();
         AvisoCadCont = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -81,6 +81,8 @@ public class InterfaceFinal extends javax.swing.JFrame {
         SacarButton = new javax.swing.JButton();
         DepContTxt = new javax.swing.JTextField();
         Id3 = new javax.swing.JLabel();
+        IdContDepTxt = new javax.swing.JTextField();
+        Id4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         AvisoRemCont = new javax.swing.JLabel();
         RemoverButtonCont = new javax.swing.JButton();
@@ -342,7 +344,7 @@ public class InterfaceFinal extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CPFContCadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SaldoContCadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdContCadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -356,7 +358,7 @@ public class InterfaceFinal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CPFContCadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SaldoContCadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(CadButtonCont)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -391,31 +393,43 @@ public class InterfaceFinal extends javax.swing.JFrame {
         Id3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Id3.setText("Sacar");
 
+        Id4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Id4.setText("Id - Conta: ");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(AvisoDepCont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DepositarButton)
+                        .addComponent(Id4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IdContDepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(AvisoDepCont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(DepositarButton)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DepContTxt)
+                                    .addComponent(Id2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(119, 119, 119)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(DepContTxt)
-                                .addComponent(Id2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(119, 119, 119)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SacContTxt)
-                            .addComponent(Id3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SacarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))))
+                                .addComponent(SacContTxt)
+                                .addComponent(Id3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SacarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Id4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdContDepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Id2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Id3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -611,7 +625,7 @@ public class InterfaceFinal extends javax.swing.JFrame {
     private void AtualizaButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         if(IdAtuTxt.getText().trim().equals("") || NomeAtuTxt.getText().trim().equals("") || 
         		CPFAtuTxt.getText().trim().equals("") || RGAtuTxt.getText().trim().equals("")) {
-        	JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
+        	JOptionPane.showMessageDialog(null, "4Erro ao atualizar!");
         }else {
         	Pessoa p = new Pessoa();
         	if((p = p.buscarPessoa(Integer.parseInt(IdAtuTxt.getText()))) != null) {
@@ -623,9 +637,9 @@ public class InterfaceFinal extends javax.swing.JFrame {
             			iniciarTablePessoa();
             			JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
             			limparCamposPessoa();
-            		}else JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
-        		}else JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
-        	}else JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
+            		}else JOptionPane.showMessageDialog(null, "1Erro ao atualizar!");
+        		}else JOptionPane.showMessageDialog(null, "2Erro ao atualizar!");
+        	}else JOptionPane.showMessageDialog(null, "3Erro ao atualizar!");
         }
     }                                              
 
@@ -656,19 +670,68 @@ public class InterfaceFinal extends javax.swing.JFrame {
     }                                             
 
     private void CadButtonContActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
+        if(IdContCadTxt.getText().trim().equals("")) {
+        	JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+        }else {
+        	Pessoa p;
+        	if((p = Pessoa.buscarPessoa(Integer.parseInt(IdContCadTxt.getText()))) != null) {
+        		Conta c = new Conta();
+        		c.setPessoa(p);
+        		if(SaldoContCadTxt.getText().trim().equals("")) c.setSaldo(0.0);
+        		else c.setSaldo(Double.parseDouble(SaldoContCadTxt.getText()));
+        		if(c.salvarConta()) {
+        			limparCamposConta();
+        			iniciarTableConta();
+        			JOptionPane.showMessageDialog(null, "Conta cadastrada com sucesso!");
+        		}else JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+        	}else JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+        }
     }                                             
 
     private void RemoverButtonContActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
+    	if(IdContRemTxt.getText().trim().equals("")) {
+        	JOptionPane.showMessageDialog(null, "Erro ao remover!");
+        }else {
+        	if(Conta.removerConta(Integer.parseInt(IdContRemTxt.getText()))) {
+        		limparCamposConta();
+    			iniciarTableConta();
+    			JOptionPane.showMessageDialog(null, "Conta removida com sucesso!");
+        	}else JOptionPane.showMessageDialog(null, "Erro ao remover!");
+        }
     }                                                 
 
     private void DepositarButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
+        if(DepContTxt.getText().trim().equals("") || IdContDepTxt.getText().trim().equals("")) {
+        	JOptionPane.showMessageDialog(null, "Deposito inválido!");
+        }else {
+        	Conta c;
+        	if((c = Conta.buscarConta(Integer.parseInt(IdContDepTxt.getText()))) != null) {
+        		c.setSaldo(c.getSaldo() + (Double.parseDouble(DepContTxt.getText())));
+        		if(c.atualizarConta()) {
+        			limparCamposConta();
+        			iniciarTableConta();
+        			JOptionPane.showMessageDialog(null, "Depositado com sucesso!");
+        		}else JOptionPane.showMessageDialog(null, "Erro ao depositar!");
+        	}else JOptionPane.showMessageDialog(null, "Erro ao depositar!");
+        }
     }                                               
 
     private void SacarButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+    	if(SacContTxt.getText().trim().equals("") || IdContDepTxt.getText().trim().equals("")) {
+        	JOptionPane.showMessageDialog(null, "Saque inválido!");
+        }else {
+        	Conta c;
+        	if((c = Conta.buscarConta(Integer.parseInt(IdContDepTxt.getText()))) != null) {
+        		c.setSaldo(c.getSaldo() - (Double.parseDouble(SacContTxt.getText())));
+        		if(c.getSaldo() > 0) {
+        			if(c.atualizarConta()) {
+            			limparCamposConta();
+            			iniciarTableConta();
+            			JOptionPane.showMessageDialog(null, "Sacado com sucesso!");
+            		}else JOptionPane.showMessageDialog(null, "Erro ao sacar!");
+        		}else JOptionPane.showMessageDialog(null, "Saldo insuficiente!");
+        	}else JOptionPane.showMessageDialog(null, "Erro ao sacar!");
+        }
     }
     
     private void limparCamposPessoa() {
@@ -680,6 +743,15 @@ public class InterfaceFinal extends javax.swing.JFrame {
     	RGAtuTxt.setText("");
     	CPFAtuTxt.setText("");
     	IdRemTxt.setText("");
+    }
+    
+    private void limparCamposConta(){
+    	IdContCadTxt.setText("");
+    	SaldoContCadTxt.setText("");
+    	IdContRemTxt.setText("");
+    	SacContTxt.setText("");
+    	DepContTxt.setText("");
+    	IdContDepTxt.setText("");
     }
     
     private void iniciarTablePessoa() {
@@ -776,7 +848,7 @@ public class InterfaceFinal extends javax.swing.JFrame {
     private javax.swing.JLabel AvisoRemCont;
     private javax.swing.JTextField CPFAtuTxt;
     private javax.swing.JTextField CPFCadTxt;
-    private javax.swing.JTextField CPFContCadTxt;
+    private javax.swing.JTextField SaldoContCadTxt;
     private javax.swing.JButton CadButton;
     private javax.swing.JButton CadButtonCont;
     private javax.swing.JTextField DepContTxt;
@@ -785,8 +857,10 @@ public class InterfaceFinal extends javax.swing.JFrame {
     private javax.swing.JLabel Id1;
     private javax.swing.JLabel Id2;
     private javax.swing.JLabel Id3;
+    private javax.swing.JLabel Id4;
     private javax.swing.JTextField IdAtuTxt;
     private javax.swing.JTextField IdContCadTxt;
+    private javax.swing.JTextField IdContDepTxt;
     private javax.swing.JTextField IdContRemTxt;
     private javax.swing.JTextField IdRemTxt;
     private javax.swing.JTextField NomeAtuTxt;

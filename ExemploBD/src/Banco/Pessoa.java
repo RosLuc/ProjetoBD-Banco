@@ -88,7 +88,7 @@ public class Pessoa {
         }
     }
 	
-	public Pessoa buscarPessoa(int id){
+	static public Pessoa buscarPessoa(int id){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
@@ -145,7 +145,8 @@ public class Pessoa {
 		List<Pessoa> lista;
 		lista = Pessoa.ListPessoa();
 		for(int i = 0; i < lista.size(); i++) {
-			if(p.getCPF().equals(lista.get(i).getCPF()) || p.getRG().equals(lista.get(i).getRG())) {
+			if((p.getCPF().equals(lista.get(i).getCPF()) || p.getRG().equals(lista.get(i).getRG())) && 
+					(p.getId_pessoa() != lista.get(i).getId_pessoa())) {
 				return false;
 			}
 		}

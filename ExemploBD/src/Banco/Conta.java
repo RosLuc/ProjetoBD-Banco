@@ -107,7 +107,7 @@ public class Conta {
         }
     }
 	
-	public Conta buscarConta(int id){
+	static public Conta buscarConta(int id){
         try{
             EntityManager s = Persistence.createEntityManagerFactory("my-app").createEntityManager();
             EntityTransaction tx_part = s.getTransaction();
